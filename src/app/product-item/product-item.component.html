@@ -1,0 +1,22 @@
+<div class="product-container">
+  <a routerLink="details/{{ product.id }}"> <img src="{{product.url}}" class="product-image"></a>
+  <h1>{{product.name}}</h1>
+  <div> {{product.price}}</div>
+  <form action="#">
+    <label for="amount">Amount</label>
+    <select name="amount" id="amount">
+      <option value="one">1</option>
+      <option value="two">2</option>
+      <option value="three">3</option>
+      <option value="four">4</option>
+      <option value="five">5</option>
+      <option value="six">6</option>
+      <option value="seven">7</option>
+      <option value="eight">8</option>
+      <option value="nine">9</option>
+      <option value="ten">10</option>
+    </select>
+    <input class="select-input select-input btn btn-primary" type="submit" value="add to cart"
+           (click)="addToCart(product)"/>
+  </form>
+</div>
