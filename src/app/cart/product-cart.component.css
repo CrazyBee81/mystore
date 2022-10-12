@@ -1,0 +1,49 @@
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-margin {
+  margin-bottom: 12px;
+}
+
+.input {
+  width: 300px;
+  text-align: center;
+}
+
+.cart-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.cart-panel {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.empty-cart-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+  font-size: 24px;
+}
+
+.sum {
+  display: flex;
+  justify-content: center;
+  font-size: 24px
+}
+
+

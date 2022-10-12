@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CartService} from '../cart.service'
+import {Product} from "../models/Product";
 
 @Component({
   selector: 'app-product-cart',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-cart.component.css']
 })
 export class ProductCartComponent implements OnInit {
+  cartList : Product[]
+  total: Number = 0
+  component = 'product-cart'
+  checkoutData = {
+    name: "",
+    adress: "",
+    creditcard: 0,
+  }
 
-  constructor() { }
+  constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
+    this.cartList =  this.cartService.getCart()
+    this.total = this.cartService.calcTotal()
+  }
+  goToConfirmationPage(){
+    location.href = "localhost:4200/confirmation"
   }
 
 }

@@ -1,1 +1,37 @@
-<p>product-cart works!</p>
+<div *ngIf="cartList.length > 0">
+  <div class="cart-container">
+    <div class="cart-panel">
+      <app-product-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
+                        class="cart-panel"></app-product-item>
+    </div>
+    <form #form="ngForm" class="form" (ngSubmit)="goToConfirmationPage()">
+      <label for="name">Name</label>
+      <input type="text"
+             name="name"
+             id="name"
+             required minlength="6"
+             placeholder="minimum 6 characters"
+             class="number-input form-margin"
+             [(ngModel)]="checkoutData.name">
+      <label for="adress">adress </label>
+      <input type="text"
+             name="adress"
+             id="adress"
+             required maxlength="6"
+             placeholder="max 100 characters"
+             class="form-margin" [(ngModel)]="checkoutData.adress">
+      <label for="card">credit card </label>
+      <input type="text"
+             name="card"
+             id="card"
+             required minlength="10"
+             class="number-input form-margin"
+             [(ngModel)]="checkoutData.creditcard">
+      <button type="submit" [disabled]="form.invalid" class="select-input select-input btn btn-primary">submit</button>
+    </form>
+  </div>
+  <div class="sum">{{total}}</div>
+</div>
+<div *ngIf="cartList.length === 0">
+  <p class="empty-cart-message">no items selected</p>
+</div>

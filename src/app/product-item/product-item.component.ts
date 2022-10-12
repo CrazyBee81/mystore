@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Product} from "../models/Product";
 import {CartService} from "../cart.service";
 
@@ -8,9 +8,8 @@ import {CartService} from "../cart.service";
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
+  @Input() component: String;
   @Input() product: Product;
-  @Output() up = new EventEmitter();
-  @Output() down = new EventEmitter();
 
   constructor(private cartService: CartService) {
     this.product = {
@@ -21,14 +20,19 @@ export class ProductItemComponent implements OnInit {
       name: "",
       url: ""
     }
+    this.component = ''
   }
 
 
   ngOnInit(): void {
   }
 
-  addToCart(product: any) : void {
+  addToCart(product: Product): void {
     this.cartService.addToCart(product)
+    alert('product added to cart')
+  }
+  updateCart(product: Product): void {
+    this.cartService.updateCart(product)
   }
 
 }
