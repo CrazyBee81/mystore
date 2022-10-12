@@ -16,6 +16,7 @@ export class ProductCartComponent implements OnInit {
     adress: "",
     creditcard: 0,
   }
+  confirmed = false
 
   constructor(private cartService : CartService) { }
 
@@ -23,8 +24,9 @@ export class ProductCartComponent implements OnInit {
     this.cartList =  this.cartService.getCart()
     this.total = this.cartService.calcTotal()
   }
-  goToConfirmationPage(){
-    location.href = "localhost:4200/confirmation"
+  onSubmit(){
+    alert('success')
+    this.confirmed = true
   }
 
 }

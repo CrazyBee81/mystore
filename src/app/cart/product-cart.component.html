@@ -1,10 +1,10 @@
-<div *ngIf="cartList.length > 0">
+<div *ngIf="cartList.length > 0 && !confirmed">
   <div class="cart-container">
     <div class="cart-panel">
       <app-product-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
                         class="cart-panel"></app-product-item>
     </div>
-    <form #form="ngForm" class="form" (ngSubmit)="goToConfirmationPage()">
+    <form #form="ngForm" class="form" (ngSubmit)="onSubmit()">
       <label for="name">Name</label>
       <input type="text"
              name="name"
@@ -21,7 +21,7 @@
              placeholder="max 100 characters"
              class="form-margin" [(ngModel)]="checkoutData.adress">
       <label for="card">credit card </label>
-      <input type="text"
+      <input type="number"
              name="card"
              id="card"
              required minlength="10"
@@ -32,6 +32,7 @@
   </div>
   <div class="sum">{{total}}</div>
 </div>
-<div *ngIf="cartList.length === 0">
+<div *ngIf="cartList.length === 0 && !confirmed">
   <p class="empty-cart-message">no items selected</p>
 </div>
+<app-confirmation *ngIf="confirmed" [checkoutData]="checkoutData"></app-confirmation>
