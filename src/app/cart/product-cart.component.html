@@ -30,7 +30,7 @@
       <button type="submit" [disabled]="form.invalid" class="select-input select-input btn btn-primary">submit</button>
     </form>
   </div>
-  <div class="sum">{{total}}</div>
+  <span class="sum">Total: ${{total}}</span>
 </div>
 <div *ngIf="cartList.length === 0 && !confirmed">
   <p class="empty-cart-message">no items selected</p>

@@ -4,7 +4,7 @@
   </a>
   <div [ngClass]="{'cart-item-details': component === 'product-cart'}">
     <h1>{{product.name}}</h1>
-    <div> {{product.price}}</div>
+    <div class="currency"> {{product.price}}</div>
     <form action="#">
       <label for="amount">Amount</label>
       <select name="amount" id="amount" [(ngModel)]="product.amount" (select)="updateCart(product)">

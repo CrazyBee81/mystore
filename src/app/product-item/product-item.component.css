@@ -39,3 +39,7 @@
   align-items: left;
   margin-left: 80px;
 }
+
+.currency::before {
+  content:"$";
+}
