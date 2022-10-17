@@ -40,7 +40,6 @@ export class CartService {
       if (this.cartList[i].id === product.id) {
         this.cartList[i] = product
         updated = true
-        break;
       }
       return updated
     }
