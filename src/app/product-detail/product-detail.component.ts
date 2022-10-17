@@ -13,6 +13,7 @@ import {ProductService} from "../product.service";
 export class ProductDetailComponent implements OnInit {
   product: Product;
   selectedId: number;
+  component: String = 'details'
 
   constructor(private cartService: CartService, private route: ActivatedRoute, private productService: ProductService) {
     this.selectedId = 0;
@@ -30,7 +31,6 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.selectedId = parseInt(params['id']);
       this.product = this.productService.getProduct(this.selectedId)
-      console.log(params)
     });
 
   }

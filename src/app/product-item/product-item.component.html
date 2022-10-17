@@ -1,9 +1,10 @@
-<div [ngClass]="{'product-container': component === 'product-list', 'cart-item': component === 'product-cart'}">
+<div [ngClass]="{'product-container': component === 'list' || component === 'details', 'cart-item': component === 'product-cart'}">
   <a routerLink="details/{{ product.id }}">
-    <img src="{{product.url}}" [ngClass]="{'product-image': component === 'product-list', 'cart-image': component === 'product-cart'}">
+    <img src="{{product.url}}" [ngClass]="{'product-image': component === 'list' || component === 'details', 'cart-image': component === 'product-cart'}">
   </a>
-  <div [ngClass]="{'cart-item-details': component === 'product-cart'}">
+  <div [ngClass]="{'cart-item-details': component === 'product-item-detail','product-image': component === 'list' || component === 'details'}">
     <h1>{{product.name}}</h1>
+    <div *ngIf="component === 'details'" class="description"> {{product.description}}</div>
     <div class="currency"> {{product.price}}</div>
     <form action="#">
       <label for="amount">Amount</label>
@@ -19,7 +20,7 @@
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-      <button *ngIf="component === 'product-list'" type="submit" (click)="addToCart(product)"
+      <button *ngIf="component === 'list' || component === 'details'" type="submit" (click)="addToCart(product)"
               class="select-input select-input btn btn-primary">add to cart
       </button>
     </form>
