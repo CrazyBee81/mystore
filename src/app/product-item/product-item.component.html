@@ -1,8 +1,8 @@
-<div [ngClass]="{'product-container': component === 'list' || component === 'details', 'cart-item': component === 'product-cart'}">
+<div [ngClass]="{'product-container': component === 'list', 'product-container-details': component === 'details', 'cart-item': component === 'product-cart'}">
   <a routerLink="details/{{ product.id }}">
     <img src="{{product.url}}" [ngClass]="{'product-image': component === 'list' || component === 'details', 'cart-image': component === 'product-cart'}">
   </a>
-  <div [ngClass]="{'cart-item-details': component === 'product-item-detail','product-image': component === 'list' || component === 'details'}">
+  <div class="product-container-right">
     <h1>{{product.name}}</h1>
     <div *ngIf="component === 'details'" class="description"> {{product.description}}</div>
     <div class="currency"> {{product.price}}</div>
