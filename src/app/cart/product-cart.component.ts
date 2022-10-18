@@ -13,7 +13,7 @@ export class ProductCartComponent implements OnInit {
   component = 'product-cart'
   checkoutData = {
     name: "",
-    adress: "",
+    address: "",
     creditcard: 0,
   }
   confirmed = false
