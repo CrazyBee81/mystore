@@ -24,4 +24,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(){
+    alert('success')
+    this.confirmed = true
+  }
+
 }

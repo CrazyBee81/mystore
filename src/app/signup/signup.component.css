@@ -1,13 +1,15 @@
-.signup-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+h1 {
+  font-size: 1.5rem;
+}
+
+.form {
+  margin-top: 64px
 }
 
 .menu-opened {
-  display:block;
+  display: block;
 }
 
 .menu-closed {
-  display:none;
+  display: none;
 }
