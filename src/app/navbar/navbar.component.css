@@ -1,21 +1,27 @@
 nav {
   background-color: #333;
-}
-h1 {
-  text-align: center;
-}
-h1 a{
-  color: white;
-  list-style-type: none;
+  height: 60px;
+  display: flex;
 }
 
 ul {
   list-style-type: none;
   margin: auto;
-  padding: 0 150px;
   overflow: hidden;
   display:flex;
-  width: 600px;
+  width: 920px;
+}
+
+@media only screen and (max-width: 920px) {
+  ul {
+    width: 620px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  ul {
+    width: 310px;
+  }
 }
 
 li {
@@ -23,13 +29,22 @@ li {
 }
 
 li a {
-  display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: auto;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-li a:hover {
-  background-color: #111;
+
+
+.nav-logo {
+  font-size: 28px;
 }
+
+.nav-link:hover {
+  background-color: gray;
+}
+
