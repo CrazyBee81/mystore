@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Product} from "../models/Product";
 import {CartService} from "../cart.service";
 
@@ -10,6 +10,7 @@ import {CartService} from "../cart.service";
 export class ProductItemComponent implements OnInit {
   @Input() component: String;
   @Input() product: Product;
+  @Output() onChange = new EventEmitter()
 
   constructor(private cartService: CartService) {
     this.product = {

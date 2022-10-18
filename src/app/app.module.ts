@@ -10,6 +10,8 @@ import { ProductCartComponent } from './cart/product-cart.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     ProductDetailComponent,
     ProductCartComponent,
     ConfirmationComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
