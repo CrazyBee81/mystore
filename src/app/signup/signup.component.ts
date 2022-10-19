@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../user.service";
 
@@ -8,18 +8,29 @@ import {UserService} from "../user.service";
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: User;
+  user: User = {
+    firstname: "",
+    lastname: "",
+    mail: "",
+    password: "",
+    address: "",
+    city: "",
+    zipCode: 0,
+    state: "",
+    creditcard: 0,
+  }
   confirmed = false
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(user: User){
+  onSubmit(user: User) {
     this.userService.createUser(user).subscribe(data => {
+      console.log(data)
       alert('user created')
     });
   }
-
 }
