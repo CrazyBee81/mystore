@@ -28,5 +28,8 @@ export class ProductCartComponent implements OnInit {
     alert('success')
     this.confirmed = true
   }
-
+  onDelete(product: Product){
+    this.cartList = this.cartService.deleteFromCart(product)
+    alert(`${product.name} has been removed`)
+  }
 }

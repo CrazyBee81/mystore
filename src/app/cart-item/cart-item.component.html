@@ -24,11 +24,10 @@
   </div>
   <div class="cart-item-right">
     <div class="currency"> {{product.price}}</div>
-    <button class="" (click)="deleted.emit()"
+    <button class="" (click)="deleted.emit(product)"
             style="">
       <i class="glyphicon glyphicon-trash"></i>
     </button>
-    <a href="#!" style="color: #cecece;"><i class="glyphicon glyphicon-trash"></i></a>
   </div>
 </div>
 

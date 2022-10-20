@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Product} from "./models/Product";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +9,7 @@ import {Product} from "./models/Product";
 export class CartService {
   cartList: Product[] = []
 
-  constructor() {
-  }
+  constructor(private http: HttpClient) { }
 
   getCart() {
     return this.cartList;
@@ -43,6 +44,12 @@ export class CartService {
       }
       return updated
     }
+  }
+
+  deleteFromCart(product: Product) {
+    const newCartList = this.cartList.filter(cartItem => product.id !== cartItem.id);
+    this.cartList = newCartList;
+    return this.cartList
   }
 
   clearCart() {
