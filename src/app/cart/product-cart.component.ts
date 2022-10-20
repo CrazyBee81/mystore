@@ -28,6 +28,12 @@ export class ProductCartComponent implements OnInit {
     alert('success')
     this.confirmed = true
   }
+
+  updateCart(product: Product): void {
+    this.cartService.updateCart(product)
+    this.cartService.calcTotal()
+  }
+
   onDelete(product: Product){
     this.cartList = this.cartService.deleteFromCart(product)
     alert(`${product.name} has been removed`)

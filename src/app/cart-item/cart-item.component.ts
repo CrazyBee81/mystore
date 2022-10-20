@@ -11,6 +11,7 @@ export class CartItemComponent implements OnInit {
   @Input() component: String;
   @Input() product: Product;
   @Output() deleted = new EventEmitter;
+  @Output() updated = new EventEmitter;
 
   constructor(private cartService: CartService) {
     this.product = {
@@ -26,9 +27,5 @@ export class CartItemComponent implements OnInit {
 
 
   ngOnInit(): void {
-  }
-
-  updateCart(product: Product): void {
-    this.cartService.updateCart(product)
   }
 }

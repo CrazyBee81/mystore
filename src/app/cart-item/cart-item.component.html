@@ -10,13 +10,13 @@
   </div>
   <div class="cart-item-center">
     <form action="#">
-      <button class="form-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+      <button class="form-btn" (click)="updated.emit(product)"
               style="">
         <i class="glyphicon glyphicon-minus"></i>
       </button>
       <input min="0" name="amount" value="1" type="number" class="form-control form-control-sm amount"
              [(ngModel)]="product.amount">
-      <button class="form-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+      <button class="form-btn" (click)="updated.emit(product)">
         <i class="glyphicon glyphicon-plus"></i>
       </button>
     </form>
@@ -24,8 +24,7 @@
   </div>
   <div class="cart-item-right">
     <div class="currency"> {{product.price}}</div>
-    <button class="" (click)="deleted.emit(product)"
-            style="">
+    <button class="" (click)="deleted.emit(product)" style="">
       <i class="glyphicon glyphicon-trash"></i>
     </button>
   </div>
