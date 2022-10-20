@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   max-width: 1024px;
   margin: auto;
+  justify-content: center;
 }
 
 .product-container {

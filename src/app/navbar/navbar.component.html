@@ -1,16 +1,23 @@
 <nav class="">
-  <ul class="">
-    <li class="">
-      <a class="nav-logo" routerLink="">MyShop<span class="sr-only">(current)</span></a>
+  <ul class="nav nav-pills">
+    <li class="nav-logo">
+      <a class="nav-link active" routerLink="">MyShop<span class="sr-only"></span></a>
     </li>
-    <li class="">
+    <li class="nav-item product-group">
       <a class="nav-link" routerLink="">Product List<span class="sr-only">(current)</span></a>
     </li>
-    <li class="">
-      <a class="nav-link" routerLink="/cart">Shopping Cart<span class="sr-only">(current)</span></a>
+    <li class="nav-item icon-group">
+      <a class="nav-link glyphicon glyphicon-shopping-cart" routerLink="/cart"></a>
     </li>
-    <li class="">
-      <a class="nav-link btn btn-primary" routerLink="/login">Sign In<span class="sr-only">(current)</span></a>
+    <li class="nav-item dropdown">
+      <a class="nav-link glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/login"><button type="button" class="btn btn-primary">Sign In</button></a>
+        <p class="dropdown-item register">Not a member? <a routerLink="/signup" style="color:dodgerblue">Register</a></p>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Your Account</a>
+        <a class="dropdown-item" href="#">Orders</a>
+      </div>
     </li>
   </ul>
 </nav>
