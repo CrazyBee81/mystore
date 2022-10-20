@@ -1,8 +1,9 @@
 .cart-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 64px;
+  justify-content: flex-start;
+  margin: 64px auto;
+  width: 920px;
 }
 
 .form {
@@ -21,16 +22,11 @@
 }
 
 .cart-panel {
+  width: 420px;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.cart-panel {
-  margin-left: 50px;
-  margin-right: 50px;
 }
 
 .empty-cart-message {

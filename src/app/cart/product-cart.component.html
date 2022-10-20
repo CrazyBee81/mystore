@@ -1,8 +1,8 @@
 <div *ngIf="cartList.length > 0 && !confirmed">
   <div class="cart-container">
     <div class="cart-panel">
-      <app-product-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
-                        class="cart-panel"></app-product-item>
+      <app-cart-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
+                        class="cart-panel"></app-cart-item>
     </div>
     <form #form="ngForm" class="form" (ngSubmit)="onSubmit()">
       <label for="name">Name</label>

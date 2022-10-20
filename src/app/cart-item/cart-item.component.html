@@ -1,0 +1,14 @@
+<div class="cart-item">
+  <a routerLink="details/{{ product.id }}">
+    <img src="{{product.url}}" class="cart-image">
+  </a>
+  <div class="product-container-right">
+    <h1>{{product.name}}</h1>
+    <div class="description"> {{product.description}}</div>
+    <div class="currency"> {{product.price}}</div>
+    <form action="#">
+      <input type="number" name="amount" [(ngModel)]="product.amount">
+    </form>
+  </div>
+</div>
+
