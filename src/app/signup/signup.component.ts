@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../user.service";
-import {parse} from "@angular/compiler-cli/linker/babel/src/babel_core";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   }
   confirmed = false
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,8 +31,10 @@ export class SignupComponent implements OnInit {
   onSubmit(user: User) {
     this.userService.createUser(user).subscribe(data => {
       const token = data.toString() as string;
+
       localStorage.setItem('UserToken', token);
       alert('user created')
+      this.router.navigate(['/'])
     });
   }
 }
