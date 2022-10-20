@@ -1,44 +1,10 @@
-.product-image {
-  list-style-type: none;
-  width: 290px;
-  padding: 20px;
-  margin: 6px 6px;
-  border: 1px solid #33B5E5;
-}
+
 
 .cart-image {
   width: 100px;
   border-radius: 10px;
 }
 
-.product-container {
-  margin-top: 64px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.product-container-details {
-  margin-top: 64px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.product-container-right {
-  margin-left: 25px;
-  width: 100%;
-}
-
-.select-input {
-  width: 108px;
-  margin-bottom: 8px;
-  display: block;
-}
 
 .cart-item {
   display: flex;
@@ -48,7 +14,36 @@
   box-shadow: 0 2px 15px -3px rgb(0 0 0 / 7%), 0 10px 20px -2px rgb(0 0 0 / 4%);
 }
 
+.cart-item-left, .cart-item-center, .cart-item-right {
+  margin: auto;
+  width:30%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+form {
+  display: flex;
+}
+
+.form-btn {
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 8px
+}
+
+/* Hide arrows from input i, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amount {
+  width: 50%;
+  margin: auto;
+}
 
 .currency::before {
   content:"$";

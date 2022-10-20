@@ -2,13 +2,33 @@
   <a routerLink="details/{{ product.id }}">
     <img src="{{product.url}}" class="cart-image">
   </a>
-  <div class="product-container-right">
-    <h1>{{product.name}}</h1>
-    <div class="description"> {{product.description}}</div>
-    <div class="currency"> {{product.price}}</div>
+  <div class="cart-item-left">
+    <div class="ms-3">
+      <h5>{{product.name}}</h5>
+      <p class="small mb-0">{{product.description}}</p>
+    </div>
+  </div>
+  <div class="cart-item-center">
     <form action="#">
-      <input type="number" name="amount" [(ngModel)]="product.amount">
+      <button class="form-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+              style="">
+        <i class="glyphicon glyphicon-minus"></i>
+      </button>
+      <input min="0" name="amount" value="1" type="number" class="form-control form-control-sm amount"
+             [(ngModel)]="product.amount">
+      <button class="form-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+        <i class="glyphicon glyphicon-plus"></i>
+      </button>
     </form>
+
+  </div>
+  <div class="cart-item-right">
+    <div class="currency"> {{product.price}}</div>
+    <button class="" (click)="deleted.emit()"
+            style="">
+      <i class="glyphicon glyphicon-trash"></i>
+    </button>
+    <a href="#!" style="color: #cecece;"><i class="glyphicon glyphicon-trash"></i></a>
   </div>
 </div>
 

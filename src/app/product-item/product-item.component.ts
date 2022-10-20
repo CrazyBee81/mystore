@@ -10,7 +10,7 @@ import {CartService} from "../cart.service";
 export class ProductItemComponent implements OnInit {
   @Input() component: String;
   @Input() product: Product;
-  @Output() onChange = new EventEmitter()
+  @Output() added = new EventEmitter()
 
   constructor(private cartService: CartService) {
     this.product = {
@@ -28,11 +28,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToCart(product: Product): void {
-    this.cartService.addToCart(product)
-    alert('product added to cart')
-  }
-    updateCart(product: Product): void {
+  updateCart(product: Product): void {
     this.cartService.updateCart(product)
   }
 
