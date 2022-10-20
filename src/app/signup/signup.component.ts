@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../user.service";
+import {parse} from "@angular/compiler-cli/linker/babel/src/babel_core";
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +30,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit(user: User) {
     this.userService.createUser(user).subscribe(data => {
-      console.log(data)
+      const token = data.toString() as string;
+      localStorage.setItem('UserToken', token);
       alert('user created')
     });
   }
