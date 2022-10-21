@@ -16,17 +16,22 @@
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
          aria-haspopup="true" aria-expanded="false">
         <i class="glyphicon glyphicon-user"></i>
-        <p style="margin: 0;">Hello, sign in!</p>
+        <p style="margin: 0;" *ngIf="user.firstname.length > 0">Hello, {{user.firstname}}!</p>
+        <p style="margin: 0;"  *ngIf="user.firstname.length < 0">Hello, sign in!</p>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/login">
+        <a class="dropdown-item" routerLink="/login" *ngIf="user.firstname.length < 0">
           <button type="button" class="btn btn-primary">Sign In</button>
         </a>
-        <p class="dropdown-item register">Not a member? <a routerLink="/signup" style="color:dodgerblue">Register</a>
+        <p class="dropdown-item register" *ngIf="user.firstname.length < 0">Not a member? <a routerLink="/signup" style="color:dodgerblue">Register</a>
         </p>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider" *ngIf="user.firstname.length < 0"></div>
         <a class="dropdown-item" href="#">Your Account</a>
         <a class="dropdown-item" href="#">Orders</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="/" *ngIf="user.firstname.length > 0">
+          <button type="button" class="btn btn-primary">Sign Out</button>
+        </a>
       </div>
     </li>
   </ul>
