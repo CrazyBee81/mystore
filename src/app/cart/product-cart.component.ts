@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from '../cart.service'
 import {Product} from "../models/Product";
+import {User} from "../models/User";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-product-cart',
@@ -8,23 +10,38 @@ import {Product} from "../models/Product";
   styleUrls: ['./product-cart.component.css']
 })
 export class ProductCartComponent implements OnInit {
-  cartList : Product[]
+  cartList: Product[]
   total: Number = 0
   component = 'product-cart'
-  checkoutData = {
-    name: "",
+  deliveryOptions = {
+    standard: 5,
+    fast: 10,
+    sameDay: 15
+  }
+  user: User = {
+    id: 0,
+    firstname: "",
+    lastname: "",
+    password: "",
+    mail: "",
     address: "",
-    creditcard: 0,
+    city: "",
+    zipCode: 0,
+    state: "",
+    creditcard: 0
   }
   confirmed = false
 
-  constructor(private cartService : CartService) { }
+  constructor(private cartService: CartService, private userService: UserService) {
+  }
 
   ngOnInit(): void {
-    this.cartList =  this.cartService.getCart()
+    this.cartList = this.cartService.getCart()
     this.total = this.cartService.calcTotal()
+    this.user = this.userService.getUserData()
   }
-  onSubmit(){
+
+  onSubmit() {
     alert('success')
     this.confirmed = true
   }
@@ -34,7 +51,7 @@ export class ProductCartComponent implements OnInit {
     this.cartService.calcTotal()
   }
 
-  onDelete(product: Product){
+  onDelete(product: Product) {
     this.cartList = this.cartService.deleteFromCart(product)
     alert(`${product.name} has been removed`)
   }

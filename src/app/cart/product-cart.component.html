@@ -12,30 +12,28 @@
         <hr class="divider">
         <h5 class="text-uppercase mb-3">Shipping</h5>
         <div class="flex-container">
-          <h5 class="">Devlivery Address</h5>
-          <div class="row-right">
-            <div class="">`${{user.firstname}} ${{user.firstname}}`</div>
-            <div class="">${{user.address}}</div>
-            <div class="">${{user.zipCode}} ${{user.city}}</div>
+          <div class="">
+            <div class="">{{user.firstname}} {{user.lastname}}</div>
+            <div class="">{{user.address}}</div>
+            <div class="">{{user.zipCode}} {{user.city}}</div>
           </div>
         </div>
         <form #form="ngForm" class="form" (ngSubmit)="onSubmit()">
           <select class="select select-initialized">
-            <option value="1">Standard-Delivery- $5.00</option>
-            <option value="2">Fast-Delivery- $10.00</option>
-            <option value="3">Same-Day-Delivery- $15.00</option>
+            <option value="1">Standard-Delivery- ${{deliveryOptions.standard}}</option>
+            <option value="2">Fast-Delivery- ${{deliveryOptions.fast}}</option>
+            <option value="3">Same-Day-Delivery- ${{deliveryOptions.sameDay}}</option>
           </select>
         </form>
         <hr class="divider">
+        <h5 class="text-uppercase">Payment</h5>
         <div class="flex-container">
-          <h5 class="text-uppercase">Payment</h5>
-          <div class="row-right">
-            <div class="">${{user.creditcard}}</div>
-          </div>
+          <div class="">Cardnumber:</div>
+          <div class="row-right"> {{user.creditcard}}</div>
         </div>
         <hr class="divider">
         <div class="flex-container">
-          <h5 class="text-uppercase">items 3</h5>
+          <h5 class="text-uppercase">items {{cartList.length}}</h5>
           <h5 class="row-right"> ${{total}}</h5>
         </div>
         <div class="flex-container">
@@ -50,5 +48,5 @@
   <div *ngIf="cartList.length === 0 && !confirmed">
     <p class="empty-cart-message">no items selected</p>
   </div>
-  <app-confirmation *ngIf="confirmed" [checkoutData]="checkoutData"></app-confirmation>
+  <app-confirmation *ngIf="confirmed"></app-confirmation>
 </div>

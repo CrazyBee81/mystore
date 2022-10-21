@@ -1,4 +1,5 @@
 export class User {
+  id: number
   firstname: string;
   lastname: string;
   password: string;
@@ -10,6 +11,7 @@ export class User {
   creditcard: number;
 
   constructor() {
+    this.id = 0;
     this.firstname = "";
     this.lastname = "";
     this.password = "";

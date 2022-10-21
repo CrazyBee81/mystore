@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
     mail: "",
     password: "",
   }
-  token: [];
+  token: string;
 
   constructor(private userService: UserService) {}
 
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   onSubmit(signIn: SignIn) {
     console.log(signIn);
     this.userService.authenticate(signIn).subscribe(data => {
-      this.token = data;
+      this.token = (data as unknown) as string;
+      localStorage.setItem('UserToken', this.token);
       console.log(this.token );
     });
   }
