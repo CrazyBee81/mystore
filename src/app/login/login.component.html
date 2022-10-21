@@ -1,14 +1,14 @@
 <div class="container">
-  <form #form="ngForm" class="form" (ngSubmit)="onSubmit(signIn)">
+  <form #form="ngForm" class="form" (ngSubmit)="onSubmit(user)">
     <!-- Email input -->
     <div class="form-outline mb-4">
-      <input type="email" id="mail" required minlength="6" class="form-control" name="mail" [(ngModel)]="signIn.mail"/>
+      <input type="email" id="mail" required minlength="6" class="form-control" name="mail" [(ngModel)]="user.mail"/>
       <label class="form-label" for="mail">Email address</label>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-      <input type="password" id="password" required minlength="6" required class="form-control" name="password" [(ngModel)]="signIn.password"/>
+      <input type="password" id="password" required minlength="6" required class="form-control" name="password" [(ngModel)]="user.password"/>
       <label class="form-label" for="password">Password</label>
     </div>
 

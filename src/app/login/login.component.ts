@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {SignIn} from "../models/SignIn";
+import {Component, OnInit} from '@angular/core';
+import {User} from "../models/User";
 import {UserService} from "../user.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,23 +9,31 @@ import {UserService} from "../user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  signIn: SignIn = {
-    mail: "",
-    password: "",
-  }
   token: string;
+  user: User = {
+    id: 0,
+    firstname: "",
+    lastname: "",
+    password: "",
+    mail: "",
+    address: "",
+    city: "",
+    zipCode: 0,
+    state: "",
+    creditcard: 0,
+  }
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(signIn: SignIn) {
-    console.log(signIn);
-    this.userService.authenticate(signIn).subscribe(data => {
+  onSubmit(user: User) {
+    this.userService.authenticate(user).subscribe(data => {
       this.token = (data as unknown) as string;
       localStorage.setItem('UserToken', this.token);
-      console.log(this.token );
+      this.router.navigate(['/'])
     });
   }
 

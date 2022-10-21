@@ -9,12 +9,32 @@ import {User} from "../models/User";
 })
 export class NavbarComponent implements OnInit {
   user: User;
+  login: boolean = false;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
     this.user = this.userService.getUserData()
+    if (this.user.firstname.length >1) {
+      this.login =  true;
+    }
   }
 
+  logout() {
+    this.userService.deleteUserData()
+    this.user = {
+      id: 0,
+      firstname: "",
+      lastname: "",
+      password: "",
+      mail: "",
+      address: "",
+      city: "",
+      zipCode: 0,
+      state: "",
+      creditcard: 0
+    }
+    this.login = false;
+  }
 }
