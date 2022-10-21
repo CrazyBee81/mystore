@@ -1,6 +1,6 @@
 nav {
   background-color: #333;
-  height: 60px;
+  height: 80px;
   display: flex;
 }
 
@@ -15,11 +15,22 @@ ul {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .nav-link {
+  height: 60px;
   color: white;
   text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  border: 0.5px solid white;
+}
+
+.product-group p {
+  margin-top: 10px;
 }
 
 .product-group, .icon-group {
