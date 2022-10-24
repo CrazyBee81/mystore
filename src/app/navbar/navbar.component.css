@@ -41,6 +41,12 @@ ul {
   font-size: 24px;
 }
 
+.nav-logo a:hover{
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
 .dropdown-item{
   display: block;
   width: 100%;
