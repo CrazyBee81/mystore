@@ -41,14 +41,27 @@ export class ProductCartComponent implements OnInit {
     this.user = this.userService.getUserFromStorage()
   }
 
-  onSubmit() {
+  onChangeDelivery() {
     alert('success')
     this.confirmed = true
   }
 
-  updateCart(product: Product): void {
+  countUp(product: Product): void {
+    product.amount = parseInt(String(product.amount)) + 1;
     this.cartService.updateCart(product)
-    this.cartService.calcTotal()
+    this.cartList = this.cartService.getCart()
+    this.total = this.cartService.calcTotal()
+  }
+
+  countDown(product: Product): void {
+    if (product.amount > 1) {
+      product.amount = product.amount - 1;
+      this.cartService.updateCart(product)
+      this.cartList = this.cartService.getCart()
+      this.total = this.cartService.calcTotal()
+    } else {
+      this.onDelete(product)
+    }
   }
 
   onDelete(product: Product) {

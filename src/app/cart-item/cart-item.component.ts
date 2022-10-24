@@ -11,7 +11,8 @@ export class CartItemComponent implements OnInit {
   @Input() component: String;
   @Input() product: Product;
   @Output() deleted = new EventEmitter;
-  @Output() updated = new EventEmitter;
+  @Output() countUp = new EventEmitter;
+  @Output() countDown = new EventEmitter;
 
   constructor(private cartService: CartService) {
     this.product = {

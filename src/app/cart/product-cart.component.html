@@ -2,7 +2,7 @@
   <div class="cart-container">
     <div class="cart-panel">
       <app-cart-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
-                     (deleted)="onDelete(cartItem)" (updated)="updateCart(cartItem)"></app-cart-item>
+                     (deleted)="onDelete(cartItem)" (countDown)="countDown(cartItem)" (countUp)="countUp(cartItem)"></app-cart-item>
     </div>
     <div class="form-panel flex-container row-right">
       <div class="p-5">
