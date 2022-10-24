@@ -41,6 +41,10 @@
   display: block;
 }
 
+.amount-label {
+  display: block;
+}
+
 .product-btn {
   font-weight: 400;
   text-align: center;
@@ -55,6 +59,7 @@
   border-color: transparent;
   background-color: black;
   color:white;
+  margin-top: 5px;
 }
 .product-btn:hover {
   opacity: 0.7;

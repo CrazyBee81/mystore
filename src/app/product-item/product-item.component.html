@@ -7,7 +7,7 @@
     <div *ngIf="component === 'details'" class="description"> {{product.description}}</div>
     <div class="currency"> {{product.price}}</div>
     <form action="#">
-      <label for="amount">Amount</label>
+      <label for="amount" class="amount-label">Amount</label>
       <select name="amount" id="amount" [(ngModel)]="product.amount" *ngIf="component === 'list' || component === 'details'">
         <option value="1">1</option>
         <option value="2">2</option>
