@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {User} from './models/User'
 import {Router} from '@angular/router';
 import jwt_decode from "jwt-decode";
@@ -10,22 +10,33 @@ import jwt_decode from "jwt-decode";
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router : Router) { }
-
-  createUser(user:User ) : Observable<[]> {
-    return this.http.post<[]>('http://localhost:3000/users', user );
+  constructor(private http: HttpClient, private router: Router) {
   }
 
-  authenticate(user:User) : Observable<[]> {
-    return this.http.post<[]>('http://localhost:3000/user/auth', user );
+  createUser(user: User): Observable<[]> {
+    return this.http.post<[]>('http://localhost:3000/users', user);
   }
 
-  getUserData() {
+  authenticate(user: User): Observable<[]> {
+    return this.http.post<[]>('http://localhost:3000/user/auth', user);
+  }
+
+  isUser(UserToken) {
+    const decoded = jwt_decode(UserToken);
+    return decoded !== null;
+  }
+
+  getUserFromStorage(): User | null {
     const UserToken = localStorage.getItem('UserToken');
-    const user: User = jwt_decode(UserToken);
-    return user;
+    if (this.isUser(UserToken)) {
+      const decoded = jwt_decode(UserToken);
+      const user: User = decoded['User']
+      return user;
+    }
+    return null
   }
-  deleteUserData(){
+
+  deleteUserData(): void {
     localStorage.removeItem('UserToken')
     this.router.navigate(['/'])
   }

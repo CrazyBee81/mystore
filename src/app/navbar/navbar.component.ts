@@ -8,15 +8,26 @@ import {User} from "../models/User";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  user: User;
+  user: User = {
+    id: 0,
+    firstname: "",
+    lastname: "",
+    password: "",
+    mail: "",
+    address: "",
+    city: "",
+    zipCode: 0,
+    state: "",
+    creditcard: 0,
+  }
   login: boolean = false;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.user = this.userService.getUserData()
-    if (this.user.firstname.length >1) {
+    this.user = this.userService.getUserFromStorage()
+    if (this.user !== null) {
       this.login =  true;
     }
   }

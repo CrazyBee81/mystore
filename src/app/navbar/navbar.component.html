@@ -16,7 +16,7 @@
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
          aria-haspopup="true" aria-expanded="false">
         <i class="glyphicon glyphicon-user"></i>
-        <p style="margin: 0;" *ngIf="login">Hello, {{user.firstname}}!</p>
+        <p style="margin: 0;" *ngIf="user.firstname.length > 1">Hello, {{user.firstname}}!</p>
         <p style="margin: 0;"  *ngIf="!login">Hello, sign in!</p>
       </a>
       <div class="dropdown-menu">

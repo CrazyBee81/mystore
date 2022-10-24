@@ -8,7 +8,7 @@ import { Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'MyStore';
-  login: boolean = false;
+  login: boolean = true;
   token: string;
 
   constructor() {}

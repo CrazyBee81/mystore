@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../user.service";
 import {Router} from '@angular/router';
@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit {
   onSubmit(user: User) {
     this.userService.authenticate(user).subscribe(data => {
       this.token = (data as unknown) as string;
-      localStorage.setItem('UserToken', this.token);
-      this.router.navigate(['/'])
+      console.log(this.token)
+      if (this.userService.isUser(this.token)) {
+        localStorage.setItem('UserToken', this.token);
+        this.router.navigate(['/'])
+      } else {
+        alert(`Login data not correct. Please check your mail and password`)
+      }
     });
   }
 

@@ -38,7 +38,7 @@ export class ProductCartComponent implements OnInit {
   ngOnInit(): void {
     this.cartList = this.cartService.getCart()
     this.total = this.cartService.calcTotal()
-    this.user = this.userService.getUserData()
+    this.user = this.userService.getUserFromStorage()
   }
 
   onSubmit() {
