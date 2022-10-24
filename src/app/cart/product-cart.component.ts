@@ -10,14 +10,12 @@ import {UserService} from "../user.service";
   styleUrls: ['./product-cart.component.css']
 })
 export class ProductCartComponent implements OnInit {
-  cartList: Product[]
-  total: Number = 0
   component = 'product-cart'
-  deliveryOptions = {
-    standard: 5,
-    fast: 10,
-    sameDay: 15
-  }
+  cartList: Product[]
+  ItemsTotal: number = 0
+  DeliveryTotal: number = 0
+  deliveryOptions = [{"text": "Standard-Delivery- $5 ", "value": 5}, {"text":"Fast-Delivery- $10", "value":10}, {"text":"Same-Day-Delivery- $15","value": 15}]
+  selectedOption = 5
   user: User = {
     id: 0,
     firstname: "",
@@ -37,20 +35,22 @@ export class ProductCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartList = this.cartService.getCart()
-    this.total = this.cartService.calcTotal()
+    this.ItemsTotal = this.cartService.calcTotal()
+    this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
     this.user = this.userService.getUserFromStorage()
   }
 
-  onChangeDelivery() {
-    alert('success')
-    this.confirmed = true
+  onChangeDelivery(newOption: number) {
+    this.selectedOption = newOption;
+    this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
   }
 
   countUp(product: Product): void {
     product.amount = parseInt(String(product.amount)) + 1;
     this.cartService.updateCart(product)
     this.cartList = this.cartService.getCart()
-    this.total = this.cartService.calcTotal()
+    this.ItemsTotal = this.cartService.calcTotal()
+    this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
   }
 
   countDown(product: Product): void {
@@ -58,7 +58,8 @@ export class ProductCartComponent implements OnInit {
       product.amount = product.amount - 1;
       this.cartService.updateCart(product)
       this.cartList = this.cartService.getCart()
-      this.total = this.cartService.calcTotal()
+      this.ItemsTotal = this.cartService.calcTotal()
+      this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
     } else {
       this.onDelete(product)
     }

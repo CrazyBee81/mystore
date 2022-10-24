@@ -18,11 +18,9 @@
             <div class="">{{user.zipCode}} {{user.city}}</div>
           </div>
         </div>
-        <form #form="ngForm" class="form" (ngSubmit)="onSubmit()">
-          <select class="select select-initialized">
-            <option value="1">Standard-Delivery- ${{deliveryOptions.standard}}</option>
-            <option value="2">Fast-Delivery- ${{deliveryOptions.fast}}</option>
-            <option value="3">Same-Day-Delivery- ${{deliveryOptions.sameDay}}</option>
+        <form #form="ngForm" class="form">
+          <select [ngModel]="deliveryOptions" (ngModelChange)="onChangeDelivery($event)" name="sel2">
+            <option [ngValue]="i.value" *ngFor="let i of deliveryOptions">{{i.text}}</option>
           </select>
         </form>
         <hr class="divider">
@@ -34,11 +32,11 @@
         <hr class="divider">
         <div class="flex-container">
           <h5 class="text-uppercase">items {{cartList.length}}</h5>
-          <h5 class="row-right"> ${{total}}</h5>
+          <h5 class="row-right"> ${{ItemsTotal}}</h5>
         </div>
         <div class="flex-container">
           <h5 class="text-uppercase">Total price:</h5>
-          <h5 class="row-right">€ 137.00</h5>
+          <h5 class="row-right">€{{DeliveryTotal}}</h5>
         </div>
         <button type="submit" [disabled]="form.invalid" class="cart-btn">submit
         </button>
