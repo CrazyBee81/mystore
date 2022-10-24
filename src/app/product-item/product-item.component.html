@@ -22,7 +22,7 @@
       </select>
       <input type="number" name="amount" [(ngModel)]="product.amount" *ngIf="component === 'product-cart'">
       <button *ngIf="component === 'list' || component === 'details'" type="submit" (click)="added.emit(product)"
-              class="select-input select-input btn btn-primary">add to cart
+              class="select-input select-input product-btn">add to cart
       </button>
     </form>
   </div>
