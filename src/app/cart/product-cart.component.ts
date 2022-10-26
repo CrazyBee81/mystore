@@ -3,6 +3,7 @@ import {CartService} from '../cart.service'
 import {Product} from "../models/Product";
 import {User} from "../models/User";
 import {UserService} from "../user.service";
+import {OrderService} from "../order.service";
 
 @Component({
   selector: 'app-product-cart',
@@ -30,7 +31,7 @@ export class ProductCartComponent implements OnInit {
   }
   confirmed = false
 
-  constructor(private cartService: CartService, private userService: UserService) {
+  constructor(private cartService: CartService, private userService: UserService, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -38,11 +39,6 @@ export class ProductCartComponent implements OnInit {
     this.ItemsTotal = this.cartService.calcTotal()
     this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
     this.user = this.userService.getUserFromStorage()
-  }
-
-  onChangeDelivery(newOption: number) {
-    this.selectedOption = newOption;
-    this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
   }
 
   countUp(product: Product): void {
@@ -65,8 +61,17 @@ export class ProductCartComponent implements OnInit {
     }
   }
 
-  onDelete(product: Product) {
+  onDelete(product: Product): void {
     this.cartList = this.cartService.deleteFromCart(product)
     alert(`${product.name} has been removed`)
+  }
+
+  onChangeDelivery(newOption: number): void {
+    this.selectedOption = newOption;
+    this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
+  }
+
+  createOrder(user:User) : void {
+    this.orderService.createOrder(user).subscribe(data => {alert(`order is getting processed!`)})
   }
 }

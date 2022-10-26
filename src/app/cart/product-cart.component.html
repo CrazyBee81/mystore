@@ -38,7 +38,7 @@
           <h5 class="text-uppercase">Total price:</h5>
           <h5 class="row-right">€{{DeliveryTotal}}</h5>
         </div>
-        <button type="submit" [disabled]="form.invalid" class="cart-btn">submit
+        <button type="submit" (click)="createOrder(user)" class="cart-btn">Buy now!
         </button>
       </div>
     </div>
