@@ -1,5 +1,5 @@
-<div *ngIf="cartList.length > 0 && !confirmed">
-  <div class="cart-container">
+<div>
+  <div class="cart-container" *ngIf="!empty">
     <div class="cart-panel">
       <app-cart-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
                      (deleted)="onDelete(cartItem)" (countDown)="countDown(cartItem)" (countUp)="countUp(cartItem)"></app-cart-item>
@@ -43,8 +43,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="cartList.length === 0 && !confirmed">
+  <div *ngIf="empty">
     <p class="empty-cart-message">no items selected</p>
   </div>
-  <app-confirmation *ngIf="confirmed"></app-confirmation>
 </div>

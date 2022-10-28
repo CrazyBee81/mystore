@@ -1,4 +1,4 @@
-export class Product {
+export class Order {
   id: number;
   user_id: string;
   status: string

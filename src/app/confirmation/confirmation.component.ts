@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {User} from "../models/User";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-confirmation',
@@ -6,11 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-  @Input() checkoutData
+  @Input() user: User
 
-  constructor() { }
+  constructor(private userService: UserService) {
+    this.user = {
+      id: 0,
+      firstname: "",
+      lastname: "",
+      password: "",
+      mail: "",
+      address: "",
+      city: "",
+      zipCode: 0,
+      state: "",
+      creditcard: 0
+    }
+  }
 
   ngOnInit(): void {
+    this.user = this.userService.getUserFromStorage()
   }
 
 }

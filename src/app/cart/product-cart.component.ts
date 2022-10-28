@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../cart.service'
 import {Product} from "../models/Product";
 import {User} from "../models/User";
+import {Order} from "../models/Order";
 import {UserService} from "../user.service";
 import {OrderService} from "../order.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-cart',
@@ -15,7 +17,10 @@ export class ProductCartComponent implements OnInit {
   cartList: Product[]
   ItemsTotal: number = 0
   DeliveryTotal: number = 0
-  deliveryOptions = [{"text": "Standard-Delivery- $5 ", "value": 5}, {"text":"Fast-Delivery- $10", "value":10}, {"text":"Same-Day-Delivery- $15","value": 15}]
+  deliveryOptions = [{"text": "Standard-Delivery- $5 ", "value": 5}, {
+    "text": "Fast-Delivery- $10",
+    "value": 10
+  }, {"text": "Same-Day-Delivery- $15", "value": 15}]
   selectedOption = 5
   user: User = {
     id: 0,
@@ -29,16 +34,19 @@ export class ProductCartComponent implements OnInit {
     state: "",
     creditcard: 0
   }
-  confirmed = false
+  empty = true
 
-  constructor(private cartService: CartService, private userService: UserService, private orderService: OrderService) {
+  constructor(private cartService: CartService, private userService: UserService, private orderService: OrderService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.cartList = this.cartService.getCart()
-    this.ItemsTotal = this.cartService.calcTotal()
-    this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
-    this.user = this.userService.getUserFromStorage()
+    if (this.cartList.length > 0) {
+      this.empty = false
+      this.ItemsTotal = this.cartService.calcTotal()
+      this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
+      this.user = this.userService.getUserFromStorage()
+    }
   }
 
   countUp(product: Product): void {
@@ -55,7 +63,7 @@ export class ProductCartComponent implements OnInit {
       this.cartService.updateCart(product)
       this.cartList = this.cartService.getCart()
       this.ItemsTotal = this.cartService.calcTotal()
-      this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
+      this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
     } else {
       this.onDelete(product)
     }
@@ -68,10 +76,22 @@ export class ProductCartComponent implements OnInit {
 
   onChangeDelivery(newOption: number): void {
     this.selectedOption = newOption;
-    this.DeliveryTotal = this.ItemsTotal + this.selectedOption ;
+    this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
   }
 
-  createOrder(user:User) : void {
-    this.orderService.createOrder(user).subscribe(data => {alert(`order is getting processed!`)})
+  createOrder(user: User): void {
+    this.orderService.createOrder(user).subscribe(data => {
+      let order: Order = data as Order;
+      for (let cartItem of this.cartList) {
+        this.orderService.addProducts(order, cartItem).subscribe(data => {
+          console.log(`added ${data}`)
+        })
+      }
+      // clear cartlist and reroute
+      this.cartList = this.cartService.clearCart()
+      this.empty = true
+      this.router.navigate(['/confirmation'])
+
+    })
   }
 }
