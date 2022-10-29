@@ -1,0 +1,21 @@
+<div class="order-container">
+  <div class="order-header">
+    <div class="order-total">
+      1000$
+    </div>
+    <div class="order-recipient">
+    </div>
+    <div class="order-number">
+      {{orderItem.id}}
+    </div>
+    <div class="order-number">
+      {{orderItem.status}}
+    </div>
+  </div>
+  <div class="order-items">
+    <app-cart-item *ngFor="let productItem of productList" [product]="productItem"></app-cart-item>
+  </div>
+  <div class="order-details">
+  </div>
+</div>
+

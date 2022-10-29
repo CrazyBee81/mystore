@@ -41,14 +41,14 @@ export class OrderService {
     }, this.httpOptions);
   }
 
-  showLatestOrders(order): Observable<[]> {
+  showLatestOrders(user): Observable<[]> {
     this.token = localStorage.getItem('UserToken');
     this.httpOptions.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`
     })
 
-    return this.http.get<[]>(`http://localhost:3000/user/${order.id}/orders`, this.httpOptions);
+    return this.http.get<[]>(`http://localhost:3000/user/${user.id}/orders`, this.httpOptions);
   }
 
   getProducts(order: Order): Observable<[]> {

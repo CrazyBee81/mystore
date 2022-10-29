@@ -27,7 +27,7 @@
         </p>
         <div class="dropdown-divider" *ngIf="!login"></div>
         <a class="dropdown-item" href="#">Your Account</a>
-        <a class="dropdown-item" href="#">Orders</a>
+        <a class="dropdown-item" routerLink="/orders">Orders</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" *ngIf="login">
           <button type="button" (click)="logout()" class="btn btn-primary">Sign Out</button>

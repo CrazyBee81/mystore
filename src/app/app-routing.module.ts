@@ -7,12 +7,14 @@ import { ProductCartComponent } from './cart/product-cart.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
+import {OrderListComponent} from "./order-list/order-list.component";
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'details/:id', component: ProductDetailComponent },
   { path: 'cart', component: ProductCartComponent },
   { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'orders', component: OrderListComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent }
 ];
