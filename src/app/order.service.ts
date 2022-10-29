@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {mergeMap, map} from 'rxjs/operators';
 import {User} from "./models/User";
 import {Order} from "./models/Order";
 import {Product} from "./models/Product";
@@ -50,5 +49,15 @@ export class OrderService {
     })
 
     return this.http.get<[]>(`http://localhost:3000/user/${order.id}/orders`, this.httpOptions);
+  }
+
+  getProducts(order: Order): Observable<[]> {
+    this.token = localStorage.getItem('UserToken');
+    this.httpOptions.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`
+    })
+
+    return this.http.get<[]>(`http://localhost:3000/order/${order.id}/products/`, this.httpOptions);
   }
 }
