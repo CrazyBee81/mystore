@@ -1,7 +1,7 @@
 <div>
   <div class="cart-container" *ngIf="!empty">
     <div class="cart-panel">
-      <app-cart-item *ngFor="let cartItem of cartList" [product]="cartItem" [component]="component"
+      <app-cart-item *ngFor="let cartItem of cartList" [product]="cartItem"
                      (deleted)="onDelete(cartItem)" (countDown)="countDown(cartItem)" (countUp)="countUp(cartItem)"></app-cart-item>
     </div>
     <div class="form-panel flex-container row-right">
@@ -38,7 +38,7 @@
           <h5 class="text-uppercase">Total price:</h5>
           <h5 class="row-right">€{{DeliveryTotal}}</h5>
         </div>
-        <button type="submit" (click)="createOrder(user)" class="cart-btn">Buy now!
+        <button type="submit" (click)="createOrder(user, this.ItemsTotal, this.selectedOption)" class="cart-btn">Buy now!
         </button>
       </div>
     </div>

@@ -1,7 +1,6 @@
-<p>order-list works!</p>
-<div class="cart-container">
+<div class="order-container">
   <div *ngIf="login">
-    <app-order *ngFor="let orderItem of lastOrders" [orderItem]="orderItem"></app-order>
+    <app-order class="order" *ngFor="let orderItem of lastOrders" [orderItem]="orderItem" [user]="user"></app-order>
   </div>
   <div *ngIf="!login">
     <p class="empty-cart-message">please login to see orders</p>

@@ -8,7 +8,6 @@ import {CartService} from "../cart.service";
   styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent implements OnInit {
-  @Input() component: String;
   @Input() product: Product;
   @Output() deleted = new EventEmitter;
   @Output() countUp = new EventEmitter;
@@ -23,7 +22,6 @@ export class CartItemComponent implements OnInit {
       name: "",
       url: ""
     }
-    this.component = ''
   }
 
 

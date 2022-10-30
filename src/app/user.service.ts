@@ -29,8 +29,7 @@ export class UserService {
   getUserFromStorage(): User | null {
     const UserToken = localStorage.getItem('UserToken');
     if (this.isUser(UserToken)) {
-      const decoded = jwt_decode(UserToken);
-      const user: User = decoded['User']
+      const user: User = jwt_decode(UserToken);
       return user;
     }
     return null

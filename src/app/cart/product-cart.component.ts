@@ -79,8 +79,8 @@ export class ProductCartComponent implements OnInit {
     this.DeliveryTotal = this.ItemsTotal + this.selectedOption;
   }
 
-  createOrder(user: User): void {
-    this.orderService.createOrder(user).subscribe(data => {
+  createOrder(user: User, total, shipping): void {
+    this.orderService.createOrder(user, total, shipping).subscribe(data => {
       let order: Order = data as Order;
       for (let cartItem of this.cartList) {
         this.orderService.addProducts(order, cartItem).subscribe(data => {

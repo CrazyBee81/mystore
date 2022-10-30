@@ -12,6 +12,8 @@
   margin-bottom: 20px;
   border: 0;
   box-shadow: 0 2px 15px -3px rgb(0 0 0 / 7%), 0 10px 20px -2px rgb(0 0 0 / 4%);
+  background-color:white;
+  border-radius: 1.25rem;
 }
 
 .cart-item-left, .cart-item-center, .cart-item-right {

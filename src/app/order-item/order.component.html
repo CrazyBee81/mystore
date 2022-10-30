@@ -1,15 +1,20 @@
 <div class="order-container">
   <div class="order-header">
     <div class="order-total">
-      1000$
+      <h5>TOTAL</h5>
+      <p>1000$</p>
     </div>
     <div class="order-recipient">
+      <h5>DISPATCH TO</h5>
+      <p>{{user.firstname}} {{user.lastname}}</p>
     </div>
     <div class="order-number">
-      {{orderItem.id}}
+      <h5>ORDER</h5>
+        <h5># {{orderItem.id}}</h5>
     </div>
-    <div class="order-number">
-      {{orderItem.status}}
+    <div class="order-status">
+      <h5>STATUS</h5>
+        <p>{{orderItem.status}}</p>
     </div>
   </div>
   <div class="order-items">

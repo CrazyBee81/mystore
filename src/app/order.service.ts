@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {User} from "./models/User";
 import {Order} from "./models/Order";
 import {Product} from "./models/Product";
+import {OrderProduct} from "./models/OrderProduct";
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,14 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  createOrder(user:User): Observable<unknown> {
+  createOrder(user:User, total: number, shipping: number): Observable<unknown> {
     this.token = localStorage.getItem('UserToken');
     this.httpOptions.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`
     })
 
-    return this.http.post<Order>(`http://localhost:3000/user/${user.id}/orders`, {"status": "open"}, this.httpOptions)
+    return this.http.post<Order>(`http://localhost:3000/user/${user.id}/orders`, {"status": "open", "total": total, "shipping": shipping}, this.httpOptions)
   }
 
 
@@ -51,13 +52,13 @@ export class OrderService {
     return this.http.get<[]>(`http://localhost:3000/user/${user.id}/orders`, this.httpOptions);
   }
 
-  getProducts(order: Order): Observable<[]> {
+  getProducts(order: Order): Observable<[OrderProduct]> {
     this.token = localStorage.getItem('UserToken');
     this.httpOptions.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`
     })
 
-    return this.http.get<[]>(`http://localhost:3000/order/${order.id}/products/`, this.httpOptions);
+    return this.http.get<[OrderProduct]>(`http://localhost:3000/order/${order.id}/products/`, this.httpOptions);
   }
 }
